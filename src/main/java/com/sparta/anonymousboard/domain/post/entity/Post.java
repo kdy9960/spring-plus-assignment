@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ import org.springframework.security.core.parameters.P;
 @Getter
 @Setter
 @Table(name = "posts")
+@AllArgsConstructor
 @NoArgsConstructor
 public class Post {
 
@@ -49,9 +51,6 @@ public class Post {
     }
 
 
-
-
-
-
-
+    public boolean isDeleted() {
+    }
 }

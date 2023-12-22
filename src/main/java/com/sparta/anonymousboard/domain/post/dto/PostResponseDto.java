@@ -21,7 +21,7 @@ public class PostResponseDto {
     private String content;
     private LocalDateTime createDate;
 
-    public PostRequestDto(Post post) {
+    public PostResponseDto(Post post) {
         this.id = post.getId();
         this.nickname = post.getUser().getNickname();
         this.title = post.getTitle();

@@ -32,7 +32,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<CommonResponseDto> createPost(@RequestBody PostRequestDto postRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        PostResponseDto responseDto = PostService.createPost(postRequestDto, userDetails.getUser().getId());
+        PostService.createPost(postRequestDto, userDetails.getUser().getId());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new CommonResponseDto(HttpStatus.CREATED.value(), "포스트가 작성되었습니다."));
     }

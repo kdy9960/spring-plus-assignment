@@ -6,6 +6,8 @@ import com.sparta.anonymousboard.domain.post.entity.Post;
 import com.sparta.anonymousboard.domain.post.repository.PostRepository;
 import com.sparta.anonymousboard.domain.user.entity.User;
 import com.sparta.anonymousboard.domain.user.repository.UserRepository;
+import com.sparta.anonymousboard.global.common.CommonResponse;
+import com.sparta.anonymousboard.global.common.CommonResponseCode;
 import com.sparta.anonymousboard.global.exception.CustomException;
 import com.sparta.anonymousboard.global.exception.ExceptionResponseCode;
 import lombok.RequiredArgsConstructor;
@@ -15,19 +17,21 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostService {
 
-    private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto, Long id) {
+    public void createPost(PostRequestDto postRequestDto, Long id) {
         User user = userRepository.findById(id).orElseThrow(
                 ()-> new CustomException(ExceptionResponseCode.NOT_FOUND_USER));
 
-        Post post = new Post();
+
+        Post post = new Post(postRequestDto, );
+
         postRepository.save(post);
-        return new PostResponseDto(post)
     }
 
     public PostResponseDto getPost(Long postId) {
+        Post post = find
     }
 
     public Post getPostList() {
@@ -37,5 +41,8 @@ public class PostService {
     }
 
     public void deletePost(Long postId, User user) {
+        Post post =
+
+        postRepository.delete(post);
     }
 }
